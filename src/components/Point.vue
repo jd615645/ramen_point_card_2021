@@ -1,19 +1,18 @@
 <template>
   <div
     class="point horizontal-vertical"
-    :class="`point-${ramen.color}`"
-    @click="selectPoint()">
+    :class="`point-${ramen.color}`">
     <div class="selected horizontal-vertical" v-if="selected">
       <img src="../assets/images/ramens.png" alt="ramens">
     </div>
     <div class="info horizontal-vertical">
-      <h3 class="font-weight-bold sub-title" v-if="ramen.sub_title_top">
+      <h3 class="sub-title" v-if="ramen.sub_title_top">
         {{ ramen.sub_title_top }}
       </h3>
-      <h2 class="font-weight-bold title" v-if="ramen.title">
+      <h2 class="title" v-if="ramen.title">
         {{ ramen.title }}
       </h2>
-      <h3 class="font-weight-bold sub-title" v-if="ramen.sub_title_bottom">
+      <h3 class="sub-title" v-if="ramen.sub_title_bottom">
         {{ ramen.sub_title_bottom }}
       </h3>
     </div>
@@ -24,17 +23,8 @@
 export default {
   name: 'Point',
   props: {
+    selected: Boolean,
     ramen: Object,
-  },
-  data() {
-    return {
-      selected: false
-    }
-  },
-  methods: {
-    selectPoint() {
-      this.selected = this.selected ? false : true;
-    }
   },
 }
 </script>
@@ -42,9 +32,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .point {
-  color: #fff;
-
-  margin: .5rem;
+  color: rgb(255, 255, 255);
+  margin: .2rem;
 }
 
 .horizontal-vertical {
@@ -55,8 +44,9 @@ export default {
 }
 
 .selected {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
+  padding: .3rem;
   position: absolute;
   border-radius: 50%;
   background-color: #2125296b;
@@ -67,8 +57,8 @@ export default {
 }
 
 .info {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
 
   border: 2px solid;
   border-radius: 50%;
@@ -101,11 +91,13 @@ export default {
 }
 
 .title {
-  font-size: 1.4rem;
+  font-size: .9rem;
   cursor: pointer;
+  font-weight: 700;
 }
 .sub-title {
-  font-size: 1rem;
+  font-size: .6rem;
   cursor: pointer;
+  font-weight: 500;
 }
 </style>
