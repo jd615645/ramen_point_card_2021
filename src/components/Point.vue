@@ -4,13 +4,13 @@
       <img src="../assets/images/ramens.png" alt="ramens">
     </div>
     <div class="info horizontal-vertical">
-      <h3 class="sub-title" v-if="ramen.sub_title_top">
+      <h3 class="sub-title my-1" v-if="ramen.sub_title_top">
         {{ ramen.sub_title_top }}
       </h3>
-      <h2 class="title" v-if="ramen.title">
+      <h2 class="title m-0" v-if="ramen.title">
         {{ ramen.title }}
       </h2>
-      <h3 class="sub-title" v-if="ramen.sub_title_bottom">
+      <h3 class="sub-title my-1" v-if="ramen.sub_title_bottom">
         {{ ramen.sub_title_bottom }}
       </h3>
     </div>
@@ -31,6 +31,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+
+@mixin size($width, $height){
+  width: $width ;
+  height: $height ;
+}
+
 .horizontal-vertical {
   display: flex;
   align-items: center;
@@ -39,11 +45,9 @@ export default {
 }
 
 .selected {
-  width: 100px;
-  height: 100px;
+  @include size(90px, 90px);
 
   padding: .3rem;
-
   z-index: 100;
 
   position: absolute;
@@ -52,13 +56,11 @@ export default {
   background-color: #2125296b;
 }
 .selected img {
-  width: 100px;
-  height: 100px;
+  @include size(90px, 90px);
 }
 
 .point-background {
-  height: 105px;
-  width: 105px;
+  @include size(95px, 95px);
 
   z-index: 10;
 
@@ -67,8 +69,7 @@ export default {
 }
 
 .info {
-  height: 100px;
-  width: 100px;
+  @include size(90px, 90px);
 
   z-index: 50;
 
@@ -91,7 +92,7 @@ td {
 
 [color="pink"] {
   .point-border {
-    border-color: #D2AEBB;
+    border-color: #7C197B;
   }
   .point-background {
     background-color: #e58297c7;
@@ -107,7 +108,7 @@ td {
 }
 [color="red"] {
   .point-border {
-    border-color: #E28594;
+    border-color: #E58297;
   }
   .point-background {
     background-color: #C62B56c7;
@@ -143,8 +144,7 @@ td {
 }
 
 .point-border {
-  height: 100px;
-  width: 100px;
+  @include size(90px, 90px);
 
   z-index: 20;
 
@@ -155,12 +155,12 @@ td {
 
 .title {
   font-size: .9rem;
-  cursor: pointer;
   font-weight: 1000;
+  cursor: pointer;
 }
 .sub-title {
   font-size: .6rem;
-  cursor: pointer;
   font-weight: 700;
+  cursor: pointer;
 }
 </style>
