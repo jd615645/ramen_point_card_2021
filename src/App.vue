@@ -26,6 +26,7 @@
     </div>
   
     <div class="share-card px-4 py-3 m-1">
+      <button type="button" class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold" @click="resetpoint">重設分數</button>
       <button type="button" class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold" @click="rename">設定名字</button>
       <button type="button" class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold" @click="saveImage">下載圖片</button>
       <button type="button" class="btn btn-primary btn-md btn-block px-4 font-weight-bold" @click="sharePage">FB 分享</button>
@@ -74,6 +75,10 @@ export default {
         this.ramenPoint = this.ramenPoint + 1;
         this.selected[x][y] = true;
       }
+    },
+    resetpoint() {
+      this.ramenPoint = 0;
+      this.selected = Array(11).fill().map(()=>Array(10).fill(false));
     },
     rename() {
       this.username = window.prompt("請輸入您想要顯示的名字：", this.username);
