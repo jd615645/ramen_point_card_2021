@@ -1,18 +1,7 @@
 <template>
   <div>
-    <div class="info-card px-4 py-2 m-1">
-      <h1 class="mt-4 banner font-weight-bold">台湾ラーメン</h1>
-      <h2 class="mb-3 sub-banner">
-        <span>台灣拉麵愛好會 ★ 2020票選名店</span>
-      </h2>
-      <p class="text-right m-0">{{ ramenPoint }} / 101 ({{ progressbarPercent.toFixed(2) }} %)</p>
-      <div class="progress mb-2">
-        <div class="progress-bar" role="progressbar" :style="{ width: progressbarPercent + '%' }" aria-valuenow="progressbarPercent" aria-valuemin="0" aria-valuemax="101"></div>
-      </div>
-      <p>
-        資料來源
-        <a href="https://www.facebook.com/TWRamen/posts/4443878185639668" target="_blank">台灣拉麵愛好會</a>
-      </p>
+    <div class="info-block">
+      <InfoCard :ramen-point="ramenPoint" :progressbar-percent="progressbarPercent" />
     </div>
 
     <div class="point-card" id="pointCard">
@@ -41,16 +30,16 @@
 </template>
 
 <script>
-import Point from './components/Point.vue'
-import ramens from './assets/data/ramens.json'
-import * as htmlToImage from 'html-to-image'
-// import { toPng } from 'html-to-image'
-import download from 'downloadjs'
+import Point from './components/Point.vue';
+import InfoCard from './components/InfoCard.vue';
+import ramens from './assets/data/ramens.json';
+import * as htmlToImage from 'html-to-image';
 
 export default {
   name: 'App',
   components: {
-    Point
+    Point,
+    InfoCard
   },
   computed: {
     progressbarPercent() {
@@ -84,14 +73,20 @@ export default {
       this.username = window.prompt("請輸入您想要顯示的名字：", this.username);
     },
     saveImage() {
-      htmlToImage.toPng(document.getElementById('point-card'))
+      htmlToImage
+        .toJpeg(
+          document.querySelector("#pointCard"),
+          {
+            quality: 0.95,
+            backgroundColor: '#FBE0B2',
+          }
+        )
         .then(function (dataUrl) {
-          console.log(dataUrl);
-          download(dataUrl, 'ramen.png');
-        })
-        .catch(function (error) {
-          console.error('oops, something went wrong!', error);
-        })
+          var link = document.createElement('a');
+          link.download = '賓果.jpeg';
+          link.href = dataUrl;
+          link.click();
+        });
     },
     sharePage() {
       const pageUrl = 'https://jd615645.github.io/ramen_point_card_2021/';
@@ -102,7 +97,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Roboto, 黑體-繁, 微軟正黑體, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -120,13 +115,10 @@ export default {
   left: 15px;
 }
 
-.info-card {
+.info-block {
   position: fixed;
-  background-color: #ffffff9e;
 
   z-index: 200;
-
-  border-radius: 1rem;
 
   top: 15px;
   left: 15px;
