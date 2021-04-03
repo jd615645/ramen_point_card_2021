@@ -94,13 +94,9 @@ export default {
         })
     },
     sharePage() {
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+      const pageUrl = 'https://jd615645.github.io/ramen_point_card_2021/';
+      const fbLink = 'https://www.facebook.com/sharer.php?u=' + pageUrl;
+      window.open(fbLink, '_blank', 'height=400, width=600');
     }
   },
 }
