@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="point horizontal-vertical"
-    :class="`point-${ramen.color}`">
+  <div class="point horizontal-vertical" :color="ramen.color">
     <div class="selected horizontal-vertical" v-if="selected">
       <img src="../assets/images/ramens.png" alt="ramens">
     </div>
@@ -16,6 +14,8 @@
         {{ ramen.sub_title_bottom }}
       </h3>
     </div>
+    <div class="point-border"></div>
+    <div class="point-background"></div>
   </div>
 </template>
 
@@ -30,12 +30,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.point {
-  color: rgb(255, 255, 255);
-  margin: .2rem;
-}
-
+<style lang="scss" scoped>
 .horizontal-vertical {
   display: flex;
   align-items: center;
@@ -46,9 +41,14 @@ export default {
 .selected {
   width: 100px;
   height: 100px;
+
   padding: .3rem;
+
+  z-index: 100;
+
   position: absolute;
   border-radius: 50%;
+
   background-color: #2125296b;
 }
 .selected img {
@@ -56,48 +56,111 @@ export default {
   height: 100px;
 }
 
+.point-background {
+  height: 105px;
+  width: 105px;
+
+  z-index: 10;
+
+  position: absolute;
+  border-radius: 50%;
+}
+
 .info {
   height: 100px;
   width: 100px;
 
-  border: 2px solid;
+  z-index: 50;
+
   border-radius: 50%;
 }
 
-.point-pink .info {
-  border-color: #666;
-  background-color: #e58297c7;
+.point {
+  color: #ffffff;
+  margin: .2rem;
 }
-.point-orange .info {
-  border-color: #666;
-  background-color: #EA924Ac7;
+
+td {
+  .point-border {
+    transition: border-radius .3s ease-in-out;
+  }
+  &:hover .point-border {
+    border-radius: 40% 50%;
+  }
 }
-.point-red .info {
-  border-color: #666;
-  background-color: #C62B56c7;
+
+[color="pink"] {
+  .point-border {
+    border-color: #D2AEBB;
+  }
+  .point-background {
+    background-color: #e58297c7;
+  }
 }
-.point-green .info {
-  border-color: #666;
-  background-color: #65B093c7;
+[color="orange"] {
+  .point-border {
+    border-color: #985C2D;
+  }
+  .point-background {
+    background-color: #EA924Ac7;
+  }
 }
-.point-purple .info {
-  border-color: #666;
-  background-color: #7E7FBCc7;
+[color="red"] {
+  .point-border {
+    border-color: #E28594;
+  }
+  .point-background {
+    background-color: #C62B56c7;
+  }
 }
-.point-yellow .info {
-  border-color: #666;
-  background-color: #FFE21Ac7;
-  color: #333;
+[color="green"] {
+  .point-border {
+    border-color: #3F7257;
+  }
+  .point-background {
+    background-color: #65B093c7;
+  }
+}
+[color="purple"] {
+  .point-border {
+    border-color: #403B94;
+  }
+  .point-background {
+    background-color: #7E7FBCc7;
+  }
+}
+[color="yellow"] {
+  .point-border {
+    border-color: #D3C363;
+  }
+  .point-background {
+    background-color: #FFE21Ac7;
+    color: #333;
+  }
+  .info {
+    color: #333;
+  }
+}
+
+.point-border {
+  height: 100px;
+  width: 100px;
+
+  z-index: 20;
+
+  border: 2px solid;
+  border-radius: 50% 40%;
+  position: absolute;
 }
 
 .title {
   font-size: .9rem;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 1000;
 }
 .sub-title {
   font-size: .6rem;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 700;
 }
 </style>
