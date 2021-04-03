@@ -4,14 +4,10 @@
       <InfoCard :ramen-point="ramenPoint" :progressbar-percent="progressbarPercent" />
     </div>
 
-    <div class="point-card" id="pointCard">
-      <table class="mt-2 d-flex flex-column align-items-center">
-        <tr v-for="(row, x) in ramens" :key="`row-${x}`">
-          <td v-for="(ramen, y) in row" :key="`col-${y}`">
-            <Point :ramen="ramen" :selected="selected[x][y]" @click="selectPoint(x, y)" />
-          </td>
-        </tr>
-      </table>
+    <div class="point-card container" id="pointCard">
+      <div class="row justify-content-center" v-for="(row, x) in ramens" :key="`row-${x}`">
+        <Point v-for="(ramen, y) in row" :key="`col-${y}`" :ramen="ramen" :selected="selected[x][y]" @click="selectPoint(x, y)" />
+      </div>
     </div>
   
     <div class="share-card px-4 py-3 m-1">
@@ -70,12 +66,12 @@ export default {
       this.selected = Array(11).fill().map(()=>Array(10).fill(false));
     },
     rename() {
-      this.username = window.prompt("請輸入您想要顯示的名字：", this.username);
+      this.username = window.prompt('請輸入您想要顯示的名字：', this.username);
     },
     saveImage() {
       htmlToImage
         .toJpeg(
-          document.querySelector("#pointCard"),
+          document.querySelector('#app'),
           {
             quality: 0.95,
             backgroundColor: '#FBE0B2',
