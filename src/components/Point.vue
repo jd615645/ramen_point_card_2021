@@ -79,9 +79,6 @@ export default {
 .point {
   color: #ffffff;
   margin: .2rem;
-}
-
-td {
   .point-border {
     transition: border-radius .3s ease-in-out;
   }

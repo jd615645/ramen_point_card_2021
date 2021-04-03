@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="info-block">
+    <div class="info-block m-3">
       <InfoCard :ramen-point="ramenPoint" :progressbar-percent="progressbarPercent" />
     </div>
 
@@ -10,18 +10,18 @@
       </div>
     </div>
   
-    <div class="share-card px-4 py-3 m-1">
+    <div class="share-card px-4 py-3 m-3">
       <button type="button" class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold" @click="resetpoint">重設分數</button>
       <button type="button" class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold" @click="rename">設定名字</button>
       <button type="button" class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold" @click="saveImage">下載圖片</button>
       <button type="button" class="btn btn-primary btn-md btn-block px-4 font-weight-bold" @click="sharePage">FB 分享</button>
     </div>
 
-    <div class="name-card" @click="rename">
+    <div class="name-card m-3" @click="rename">
       <h2 class="font-weight-bold">{{ username }}</h2>
     </div>
 
-    <img class="ribbon" src="./assets/images/ribbon.png" title="為受難者及其家屬祈福" alt="為受難者及其家屬祈福">
+    <img class="ribbon m-3" src="./assets/images/ribbon.png" title="為受難者及其家屬祈福" alt="為受難者及其家屬祈福">
   </div>
 </template>
 
@@ -74,7 +74,7 @@ export default {
           document.querySelector('#app'),
           {
             quality: 0.95,
-            backgroundColor: '#FBE0B2',
+            backgroundColor: '#F7ECD9',
           }
         )
         .then(function (dataUrl) {
