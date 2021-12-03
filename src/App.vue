@@ -20,8 +20,6 @@
     <div class="name-card m-3" @click="rename">
       <h2 class="font-weight-bold">{{ username }}</h2>
     </div>
-
-    <img class="ribbon m-3" src="./assets/images/ribbon.png" title="為受難者及其家屬祈福" alt="為受難者及其家屬祈福">
   </div>
 </template>
 
@@ -100,15 +98,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-.ribbon {
-  position: fixed;
-
-  width: 40px;
-
-  bottom: 15px;
-  left: 15px;
 }
 
 .info-block {
