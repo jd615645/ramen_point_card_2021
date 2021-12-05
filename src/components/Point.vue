@@ -1,17 +1,19 @@
 <template>
-  <div class="point horizontal-vertical" :color="ramen.color">
+  <div
+    class="point horizontal-vertical"
+    :color="color">
     <div class="selected horizontal-vertical" v-if="selected">
       <img src="../assets/images/ramens.png" alt="ramens">
     </div>
     <div class="info horizontal-vertical">
-      <h3 class="sub-title my-1" v-if="ramen.sub_title_top">
-        {{ ramen.sub_title_top }}
+      <h3 class="sub-title my-1" v-if="subTitleTop">
+        {{ subTitleTop }}
       </h3>
-      <h2 class="title m-0" v-if="ramen.title">
-        {{ ramen.title }}
+      <h2 class="title m-0" v-if="title">
+        {{ title }}
       </h2>
-      <h3 class="sub-title my-1" v-if="ramen.sub_title_bottom">
-        {{ ramen.sub_title_bottom }}
+      <h3 class="sub-title my-1" v-if="subTitleBottom">
+        {{ subTitleBottom }}
       </h3>
     </div>
     <div class="point-border"></div>
@@ -23,13 +25,29 @@
 export default {
   name: 'Point',
   props: {
-    selected: Boolean,
-    ramen: Object,
+    selected: {
+      type: Boolean,
+      default: false
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    subTitleTop: {
+      type: String,
+    },
+    subTitleBottom: {
+      type: String,
+    },
+    color: {
+      type: String,
+      // pink, orange, red, green, purple, yellow
+      default: "pink"
+    },
   },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 
 @mixin size($width, $height){

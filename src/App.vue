@@ -6,7 +6,15 @@
 
     <div class="point-card container" id="pointCard">
       <div class="d-flex justify-content-center" v-for="(row, x) in ramens" :key="`row-${x}`">
-        <Point v-for="(ramen, y) in row" :key="`col-${y}`" :ramen="ramen" :selected="selected[x][y]" @click="selectPoint(x, y)" />
+        <Point
+          v-for="(ramen, y) in row"
+          :key="ramen.title"
+          :subTitleTop="ramen.subTitleTop"
+          :title="ramen.title"
+          :subTitleBottom="ramen.subTitleBottom"
+          :color="ramen.color"
+          :selected="selected[x][y]"
+          @click="selectPoint(x, y)" />
       </div>
     </div>
   
