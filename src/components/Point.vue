@@ -32,28 +32,28 @@ export default {
     title: {
       type: String,
       required: true,
+      default: ''
     },
     subTitleTop: {
       type: String,
+      default: ''
     },
     subTitleBottom: {
       type: String,
+      default: ''
     },
     color: {
       type: String,
-      // pink, orange, red, green, purple, yellow
-      default: "pink"
+      default: 'pink',
+      validator: function (value) {
+        return ['pink', 'orange', 'red', 'green', 'purple', 'yellow'].indexOf(value) !== -1;
+      },
     },
   },
 }
 </script>
 
-<style lang="scss" scoped>
-
-@mixin size($width, $height){
-  width: $width ;
-  height: $height ;
-}
+<style scoped>
 
 .horizontal-vertical {
   display: flex;
@@ -63,7 +63,8 @@ export default {
 }
 
 .selected {
-  @include size(90px, 90px);
+  width: 90px;
+  height: 90px;
 
   padding: .3rem;
   z-index: 100;
@@ -75,11 +76,13 @@ export default {
 }
 
 .selected img {
-  @include size(90px, 90px);
+  width: 90px;
+  height: 90px;
 }
 
 .point-background {
-  @include size(95px, 95px);
+  width: 95px;
+  height: 95px;
 
   z-index: 10;
 
@@ -88,7 +91,8 @@ export default {
 }
 
 .info {
-  @include size(90px, 90px);
+  width: 90px;
+  height: 90px;
 
   z-index: 50;
 
@@ -106,61 +110,55 @@ export default {
   }
 }
 
-[color="pink"] {
-  .point-border {
+[color="pink"] .point-border {
     border-color: #7C197B;
   }
-  .point-background {
-    background-color: #e58297c7;
-  }
+[color="pink"] .point-background {
+  background-color: #e58297c7;
 }
-[color="orange"] {
-  .point-border {
-    border-color: #985C2D;
-  }
-  .point-background {
-    background-color: #EA924Ac7;
-  }
+
+[color="orange"] .point-border {
+  border-color: #985C2D;
 }
-[color="red"] {
-  .point-border {
-    border-color: #E58297;
-  }
-  .point-background {
-    background-color: #C62B56c7;
-  }
+[color="orange"] .point-background {
+  background-color: #EA924Ac7;
 }
-[color="green"] {
-  .point-border {
-    border-color: #3F7257;
-  }
-  .point-background {
-    background-color: #65B093c7;
-  }
+
+[color="red"] .point-border {
+  border-color: #E58297;
 }
-[color="purple"] {
-  .point-border {
-    border-color: #403B94;
-  }
-  .point-background {
-    background-color: #7E7FBCc7;
-  }
+[color="red"] .point-background {
+  background-color: #C62B56c7;
 }
-[color="yellow"] {
-  .point-border {
-    border-color: #D3C363;
-  }
-  .point-background {
-    background-color: #FFE21Ac7;
-    color: #333;
-  }
-  .info {
-    color: #333;
-  }
+
+[color="green"] .point-border {
+  border-color: #3F7257;
+}
+[color="green"] .point-background {
+  background-color: #65B093c7;
+}
+
+[color="purple"] .point-border {
+  border-color: #403B94;
+}
+[color="purple"] .point-background {
+  background-color: #7E7FBCc7;
+}
+
+[color="yellow"] .point-border {
+  border-color: #D3C363;
+}
+[color="yellow"] .point-background {
+  background-color: #FFE21Ac7;
+  color: #333;
+}
+[color="yellow"] .info {
+  color: #333;
 }
 
 .point-border {
-  @include size(90px, 90px);
+  width: 90px;
+  height: 90px;
 
   z-index: 20;
 
