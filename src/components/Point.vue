@@ -55,6 +55,7 @@ export default {
 
   background-color: #2125296b;
 }
+
 .selected img {
   @include size(90px, 90px);
 }

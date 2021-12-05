@@ -11,10 +11,22 @@
     </div>
   
     <div class="share-card px-4 py-3 m-3">
-      <button type="button" class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold" @click="resetpoint">重設分數</button>
-      <button type="button" class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold" @click="rename">設定名字</button>
-      <button type="button" class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold" @click="saveImage">下載圖片</button>
-      <button type="button" class="btn btn-primary btn-md btn-block px-4 font-weight-bold" @click="sharePage">FB 分享</button>
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold"
+        @click="resetpoint">重設分數</button>
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold"
+        @click="rename">設定名字</button>
+      <!-- <button
+        type="button"
+        class="btn btn-outline-secondary btn-md btn-block px-4 font-weight-bold"
+        @click="saveImage">下載圖片</button> -->
+      <!-- <button
+        type="button"
+        class="btn btn-primary btn-md btn-block px-4 font-weight-bold"
+        @click="sharePage">FB 分享</button> -->
     </div>
 
     <div class="name-card m-3" @click="rename">
@@ -27,7 +39,7 @@
 import Point from './components/Point.vue';
 import InfoCard from './components/InfoCard.vue';
 import ramens from './assets/data/ramens.json';
-import * as htmlToImage from 'html-to-image';
+// import * as htmlToImage from 'html-to-image';
 
 export default {
   name: 'App',
@@ -67,20 +79,20 @@ export default {
       this.username = window.prompt('請輸入您想要顯示的名字：', this.username);
     },
     saveImage() {
-      htmlToImage
-        .toJpeg(
-          document.querySelector('#app'),
-          {
-            quality: 0.95,
-            backgroundColor: '#F7ECD9',
-          }
-        )
-        .then(function (dataUrl) {
-          var link = document.createElement('a');
-          link.download = '賓果.jpeg';
-          link.href = dataUrl;
-          link.click();
-        });
+      // htmlToImage
+      //   .toJpeg(
+      //     document.querySelector('#app'),
+      //     {
+      //       quality: 0.95,
+      //       backgroundColor: '#F7ECD9',
+      //     }
+      //   )
+      //   .then(function (dataUrl) {
+      //     var link = document.createElement('a');
+      //     link.download = '賓果.jpeg';
+      //     link.href = dataUrl;
+      //     link.click();
+      //   });
     },
     sharePage() {
       const pageUrl = 'https://jd615645.github.io/ramen_point_card_2021/';
