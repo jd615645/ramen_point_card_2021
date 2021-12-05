@@ -102,12 +102,12 @@ export default {
 .point {
   color: #ffffff;
   margin: .2rem;
-  .point-border {
-    transition: border-radius .3s ease-in-out;
-  }
-  &:hover .point-border {
-    border-radius: 40% 50%;
-  }
+}
+.point:hover .point-border {
+  border-radius: 40% 50%;
+}
+.point .point-border {
+  transition: border-radius .3s ease-in-out;
 }
 
 [color="pink"] .point-border {
